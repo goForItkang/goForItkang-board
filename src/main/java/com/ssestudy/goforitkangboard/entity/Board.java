@@ -15,12 +15,12 @@ import java.util.List;
 @AllArgsConstructor
 public class Board {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
 
     private String content;
-    @OneToMany(mappedBy = "board") //자신의 왜래키 이름 즉 하인의 자신 클래스이름
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Image> images = new ArrayList<>();
 }

@@ -3,14 +3,12 @@ package com.ssestudy.goforitkangboard.controller;
 import com.ssestudy.goforitkangboard.dto.BoardDTO;
 import com.ssestudy.goforitkangboard.dto.ImageDTO;
 import com.ssestudy.goforitkangboard.entity.Board;
+import com.ssestudy.goforitkangboard.entity.Image;
 import com.ssestudy.goforitkangboard.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
@@ -35,12 +33,18 @@ public class BoardController {
             imageDTO.setImage(images.get(i));
             imageDTOS.add(imageDTO);
         }
+        System.out.println("boardController: " + imageDTOS);
         boardDTO.setImages(imageDTOS);
-        boardService.saveBoard(boardDTO);
-
-
+        boardService.saveBoard(boardDTO,imageDTOS);
 
         System.out.println(boardDTO);
         return ResponseEntity.ok("success");
     }
+
+//    @GetMapping("/api/board/{boardId}")
+//    public ResponseEntity<BoardDTO> getBoard(@PathVariable Long boardId){
+//        //BoardDTO boardDTO = boardService.boardGetOne(boardId); // 보드번호로 가져오기
+//
+//        return ResponseEntity.ok();
+//    }
 }

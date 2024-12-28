@@ -1,12 +1,14 @@
 package com.ssestudy.goforitkangboard.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Table(name = "image")
 @Entity
+@Data
 public class Image {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String originName;
