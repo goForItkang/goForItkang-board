@@ -22,7 +22,12 @@ public class BoardRepository {
         for (Image image : images) {
             System.out.println("이미지 대한 정보"+image);
             image.setBoard(board); // 관계설정 board_id에 대한것 설정~
+            board.getImages().add(image);
             em.persist(image);
         }
+    }
+
+    public Board selectById(Long boardId) {
+       return (Board) em.find(Board.class, boardId);
     }
 }

@@ -1,11 +1,13 @@
 package com.ssestudy.goforitkangboard.util;
 
 import com.ssestudy.goforitkangboard.dto.ImageDTO;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileSystem;
 
 @Component
 public class FileUtil {
@@ -35,4 +37,5 @@ public class FileUtil {
         }
 
     }
+    //이미지 가져올때
 }

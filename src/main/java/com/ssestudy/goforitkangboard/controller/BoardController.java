@@ -41,10 +41,10 @@ public class BoardController {
         return ResponseEntity.ok("success");
     }
 
-//    @GetMapping("/api/board/{boardId}")
-//    public ResponseEntity<BoardDTO> getBoard(@PathVariable Long boardId){
-//        //BoardDTO boardDTO = boardService.boardGetOne(boardId); // 보드번호로 가져오기
-//
-//        return ResponseEntity.ok();
-//    }
+    @GetMapping("/api/board/{boardId}")
+    public ResponseEntity<BoardDTO> getBoard(@PathVariable Long boardId){
+        BoardDTO boardDTO = boardService.boardGetOne(boardId); // 보드번호로 가져오기
+        System.out.println(boardDTO);
+        return ResponseEntity.ok(boardDTO);
+    }
 }

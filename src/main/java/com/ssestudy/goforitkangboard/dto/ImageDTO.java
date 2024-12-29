@@ -14,5 +14,4 @@ public class ImageDTO {
     private String originName;
     private String reName;
     private MultipartFile image;
-    private String boardId;
 }

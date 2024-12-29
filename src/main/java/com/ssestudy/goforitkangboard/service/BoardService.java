@@ -61,5 +61,24 @@ public class BoardService {
         boardDTO.setContent(board.getContent());
         return boardDTO;
     }
-//    private ImageDTO entityToImageDTO (Image image) {}
+    private List<ImageDTO> entityToImageDTO (List<Image> images) {
+        List<ImageDTO> imageDTOS = new ArrayList<>();
+        for (Image image : images) {
+            ImageDTO imageDTO = new ImageDTO();
+            imageDTO.setId(image.getId());
+            imageDTO.setOriginName(image.getOriginName());
+            imageDTO.setReName(image.getRealName());
+            // util 작업에서 사진작업해줘야함
+            imageDTOS.add(imageDTO);
+        }
+        return imageDTOS;
+    }
+
+    public BoardDTO boardGetOne(Long boardId) {
+        Board board = boardRepository.selectById(boardId);
+        BoardDTO boardDTO = entityToBoardDTO(board);
+        List<ImageDTO> imageDTOS  =entityToImageDTO(board.getImages());
+        boardDTO.setImages(imageDTOS);
+        return boardDTO;
+    }
 }
